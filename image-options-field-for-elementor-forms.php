@@ -73,7 +73,7 @@ function iofef_register_controls($element, $args)
     $repeater = new \Elementor\Repeater();
 
     $repeater->add_control(
-        'iofef_image_select_field_id',
+        'iofef_image_select_id',
         [
             'label' => __('Image Select Field Custom ID', 'iofef'),
             'label_block' => true,
@@ -82,7 +82,7 @@ function iofef_register_controls($element, $args)
     );
 
     $repeater->add_control(
-        'iofef_image_select_field_gallery',
+        'iofef_image_gallery',
         [
             'label' => __('Add Images', 'iofef'),
             'type' => \Elementor\Controls_Manager::GALLERY,
@@ -91,7 +91,7 @@ function iofef_register_controls($element, $args)
     );
 
     $element->add_control(
-        'iofef_image_select_field_list',
+        'iofef_image_field_list',
         array(
             'type'    => Elementor\Controls_Manager::REPEATER,
             'fields'  => $repeater->get_controls(),
@@ -106,13 +106,13 @@ function before_render_element($element)
     $settings = $element->get_settings();
     if (!empty($settings['iofef_img_select_control'])) {
         print_r($settings['iofef_img_select_control']);
-        if (array_key_exists('iofef_image_select_field_list', $settings)) {
-            $list = $settings['iofef_image_select_field_list'];
-            if (!empty($list[0]['iofef_image_select_field_id']) && !empty($list[0]['iofef_image_select_field_gallery'])) {
+        if (array_key_exists('iofef_image_field_list', $settings)) {
+            $rep_data = $settings['iofef_image_field_list'];
+            if (!empty($rep_data[0]['iofef_image_select_id']) && !empty($rep_data[0]['iofef_image_gallery'])) {
                 wp_enqueue_style('iofef-style');
                 wp_enqueue_script('iofef-scripts');
                 $element->add_render_attribute('_wrapper', [
-                    'data-iofef-image-field' => esc_attr(json_encode($list)),
+                    'data-iofef-images' => esc_attr(json_encode($rep_data)),
                 ]);
             }
         }
