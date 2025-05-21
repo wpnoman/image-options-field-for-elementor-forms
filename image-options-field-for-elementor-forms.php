@@ -27,7 +27,24 @@ define('IOFEF_FILE', __FILE__);
 define('IOFEF_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('IOFEF_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
+function iofef_register_assets()
+{
+    wp_register_style(
+        'iofef-style',
+        IOFEF_PLUGIN_URL . 'assets/css/iofef-style.css',
+        [],
+        '1.0.0'
+    );
 
+    wp_register_script(
+        'iofef-scripts',
+        IOFEF_PLUGIN_URL . 'assets/js/iofef-scripts.js',
+        ['jquery'],
+        '1.0.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'iofef_register_assets');
 
 function iofef_register_controls($element, $args)
 {
@@ -41,7 +58,7 @@ function iofef_register_controls($element, $args)
     );
 
     $element->add_control(
-        'iofef_image_select_field_enable',
+        'iofef_img_select_control',
         [
             'label' => __('Enable', 'iofef'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -81,303 +98,25 @@ function iofef_register_controls($element, $args)
         )
     );
 
-    $element->add_group_control(
-        \Elementor\Group_Control_Typography::get_type(),
-        [
-            'name' => 'iofef_image_select_field_typography',
-            'label' => __('Typography', 'iofef'),
-            'global' => [
-                'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
-            ],
-            'selector' => '{{WRAPPER}} .image_picker_selector .thumbnail p',
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_text_align',
-        [
-            'label' => __('Text Align', 'iofef'),
-            'type' => \Elementor\Controls_Manager::CHOOSE,
-            'options' => [
-                'left' => [
-                    'title' => __('Left', 'elementor'),
-                    'icon' => 'eicon-text-align-left',
-                ],
-                'center' => [
-                    'title' => __('Center', 'elementor'),
-                    'icon' => 'eicon-text-align-center',
-                ],
-                'right' => [
-                    'title' => __('Right', 'elementor'),
-                    'icon' => 'eicon-text-align-right',
-                ],
-            ],
-            'selectors' => [
-                '{{WRAPPER}} .image_picker_selector .thumbnail p' => 'text-align: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_item_width',
-        [
-            'label' => __('Item Width (%)', 'iofef'),
-            'type' => \Elementor\Controls_Manager::NUMBER,
-            'default' => 25,
-            'min' => 1,
-            'max' => 100,
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector li' => 'width: {{VALUE}}% !important;',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_item_spacing',
-        [
-            'label' => __('Item Spacing', 'iofef'),
-            'type' => \Elementor\Controls_Manager::SLIDER,
-            'size_units' => ['px', '%'],
-            'range' => [
-                'px' => [
-                    'min' => 0,
-                    'max' => 100,
-                ],
-                '%' => [
-                    'min' => 0,
-                    'max' => 100,
-                ],
-            ],
-            'default' => [
-                'unit' => 'px',
-                'size' => 10,
-            ]
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_item_border_radius',
-        [
-            'label' => __('Item Border Radius', 'iofef'),
-            'type' => \Elementor\Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%'],
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_image_border_radius',
-        [
-            'label' => __('Image Border Radius', 'iofef'),
-            'type' => \Elementor\Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', '%'],
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .image_picker_image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_image_padding',
-        [
-            'label' => __('Input Padding', 'iofef'),
-            'type' => \Elementor\Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', 'em', '%'],
-            'selectors' => [
-                '{{WRAPPER}} .image_picker_image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_label_padding',
-        [
-            'label' => __('Input Padding', 'iofef'),
-            'type' => \Elementor\Controls_Manager::DIMENSIONS,
-            'size_units' => ['px', 'em', '%'],
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails p' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]
-    );
-
-    $element->start_controls_tabs('iofef_image_select_field_normal_active');
-
-    $element->start_controls_tab(
-        'iofef_image_select_field_normal',
-        [
-            'label' => __('Normal', 'elementor'),
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_border_normal',
-        [
-            'label' => __('Item Border Type', 'iofef'),
-            'type' => \Elementor\Controls_Manager::SELECT,
-            'options' => [
-                '' => __('None', 'elementor'),
-                'solid' => _x('Solid', 'Border Control', 'elementor'),
-                'double' => _x('Double', 'Border Control', 'elementor'),
-                'dotted' => _x('Dotted', 'Border Control', 'elementor'),
-                'dashed' => _x('Dashed', 'Border Control', 'elementor'),
-                'groove' => _x('Groove', 'Border Control', 'elementor'),
-            ],
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail' => 'border-style: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_border_width_normal',
-        [
-            'label' => __('Item Border Width', 'iofef'),
-            'type' => \Elementor\Controls_Manager::DIMENSIONS,
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-            'condition' => [
-                'iofef_image_select_field_border_normal!' => '',
-            ],
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_border_color_normal',
-        [
-            'label' => __('Item Border Color', 'iofef'),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default' => '',
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail' => 'border-color: {{VALUE}};',
-            ],
-            'condition' => [
-                'iofef_image_select_field_border_normal!' => '',
-            ],
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_background_color_normal',
-        [
-            'label' => __('Background Color', 'iofef'),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default' => '',
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail' => 'background-color: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_text_color_normal',
-        [
-            'label' => __('Text Color', 'iofef'),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default' => '',
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail p' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->end_controls_tab();
-
-    $element->start_controls_tab(
-        'iofef_image_select_field_active',
-        [
-            'label' => __('Active', 'elementor'),
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_border_active',
-        [
-            'label' => __('Item Border Type', 'iofef'),
-            'type' => \Elementor\Controls_Manager::SELECT,
-            'options' => [
-                '' => __('None', 'elementor'),
-                'solid' => _x('Solid', 'Border Control', 'elementor'),
-                'double' => _x('Double', 'Border Control', 'elementor'),
-                'dotted' => _x('Dotted', 'Border Control', 'elementor'),
-                'dashed' => _x('Dashed', 'Border Control', 'elementor'),
-                'groove' => _x('Groove', 'Border Control', 'elementor'),
-            ],
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail.selected' => 'border-style: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->add_responsive_control(
-        'iofef_image_select_field_border_width_active',
-        [
-            'label' => __('Item Border Width', 'iofef'),
-            'type' => \Elementor\Controls_Manager::DIMENSIONS,
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail.selected' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-            'condition' => [
-                'iofef_image_select_field_border_active!' => '',
-            ],
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_border_color_active',
-        [
-            'label' => __('Item Border Color', 'iofef'),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default' => '',
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail.selected' => 'border-color: {{VALUE}};',
-            ],
-            'condition' => [
-                'iofef_image_select_field_border_active!' => '',
-            ],
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_background_color_active',
-        [
-            'label' => __('Background Color', 'iofef'),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default' => '',
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail.selected' => 'background-color: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->add_control(
-        'iofef_image_select_field_text_color_active',
-        [
-            'label' => __('Text Color', 'iofef'),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default' => '',
-            'selectors' => [
-                '{{WRAPPER}} ul.thumbnails.image_picker_selector .thumbnail.selected p' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $element->end_controls_tab();
-    $element->end_controls_tabs();
-
     $element->end_controls_section();
 }
 
-// function iofef_register_controls($widgets_manager)
-// {
-
-//     require_once(__DIR__ . '/includes/class-image-select-field.php');
-
-//     $widgets_manager->register(new \Elementor_Hello_World_Widget_1());
-// }
-
+function before_render_element($element)
+{
+    $settings = $element->get_settings();
+    if (!empty($settings['iofef_img_select_control'])) {
+        print_r($settings['iofef_img_select_control']);
+        if (array_key_exists('iofef_image_select_field_list', $settings)) {
+            $list = $settings['iofef_image_select_field_list'];
+            if (!empty($list[0]['iofef_image_select_field_id']) && !empty($list[0]['iofef_image_select_field_gallery'])) {
+                wp_enqueue_style('iofef-style');
+                wp_enqueue_script('iofef-scripts');
+                $element->add_render_attribute('_wrapper', [
+                    'data-iofef-image-field' => esc_attr(json_encode($list)),
+                ]);
+            }
+        }
+    }
+}
 add_action('elementor/element/form/section_form_fields/after_section_end', 'iofef_register_controls', 10, 2);
-// add_action('elementor/frontend/widget/before_render', 'iofef_register_controls', 10, 1);
+add_action('elementor/frontend/widget/before_render', 'before_render_element', 10, 1);

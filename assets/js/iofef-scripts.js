@@ -1,0 +1,55 @@
+(function ($) {
+    "use strict";
+
+    $(document).ready(function () {
+
+        $("[data-iofef-image-field]").each(function () {
+
+            var $form = $(this);
+            var imageSelectFields = $form.data("iofef-image-field");
+
+            // Loop through each image select field configuration
+            for (var i = 0; i < imageSelectFields.length; i++) {
+                var fieldData = imageSelectFields[i];
+
+                var fieldId = fieldData.iofef_image_select_field_id;
+
+                var $select = '.elementor-field-group-' + fieldId
+
+                var gallery = fieldData.iofef_image_select_field_gallery;
+                var images = gallery.map(item => item.url)
+                console.log(images);
+                addImageSelectElementor($select, images);
+            }
+        });
+
+        function addImageSelectElementor(selector, images) {
+            const field = document.querySelector(selector);
+            if (!field) return;
+
+            // add class
+            $(selector).addClass('iofef-image-select');
+            const options = field.querySelectorAll('.elementor-field-option');
+
+
+            options.forEach((option, index) => {
+                const input = option.querySelector('input');
+                const label = option.querySelector('label');
+
+                if (images[index]) {
+                    const img = document.createElement('img');
+                    const label_span = document.createElement('span');
+                    img.src = images[index];
+                    img.alt = label.innerText;
+                    label_span.innerText = label.innerText;
+
+                    label.innerHTML = ''; // clear original text
+                    label.appendChild(img);
+                    label.appendChild(label_span);
+                }
+            });
+
+        }
+
+    });
+}(jQuery));
