@@ -1,17 +1,17 @@
-.iofef-image-select .elementor-field-subgroup.elementor-subgroup-inline {
+.isfef-image-select .elementor-field-subgroup.elementor-subgroup-inline {
     width: 100%;
     row-gap: 10px;
 }
 
-.elementor-field-type-checkbox:not(.iofef-image-select) .elementor-field-option {
+.elementor-field-type-checkbox:not(.isfef-image-select) .elementor-field-option {
     display: inline-block;
 }
 
-.elementor-field-type-checkbox:not(.iofef-image-select) input[type="checkbox"] {
+.elementor-field-type-checkbox:not(.isfef-image-select) input[type="checkbox"] {
     display: none !important;
 }
 
-.elementor-field-type-checkbox:not(.iofef-image-select) input[type="checkbox"]+label {
+.elementor-field-type-checkbox:not(.isfef-image-select) input[type="checkbox"]+label {
     display: inline-block;
     padding: 10px 20px;
     background-color: #f3f3f3;
@@ -24,7 +24,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.elementor-field-type-checkbox:not(.iofef-image-select) input[type="checkbox"]+label {
+.elementor-field-type-checkbox:not(.isfef-image-select) input[type="checkbox"]+label {
     display: inline-block;
     padding: 10px 20px;
     background-color: #f3f3f3;
@@ -37,19 +37,19 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.elementor-field-type-checkbox:not(.iofef-image-select) input[type="checkbox"]:checked+label {
+.elementor-field-type-checkbox:not(.isfef-image-select) input[type="checkbox"]:checked+label {
     background-color: #0073e6;
     border-color: #0073e6;
     color: #fff;
 }
 
 /* image select */
-.iofef-image-select label {
+.isfef-image-select label {
     padding: 0 !important;
     border: 0 !important;
 }
 
-.iofef-image-select .elementor-field-subgroup label {
+.isfef-image-select .elementor-field-subgroup label {
     display: flex !important;
     flex-direction: column;
     text-align: center;
@@ -62,13 +62,13 @@
     transition: all 0.3s ease;
 }
 
-.iofef-image-select input[type="radio"],
-.iofef-image-select input[type="checkbox"] {
+.isfef-image-select input[type="radio"],
+.isfef-image-select input[type="checkbox"] {
     display: none !important;
     transition: .3s all ease;
 }
 
-.iofef-image-select label img {
+.isfef-image-select label img {
     width: 100%;
     height: auto;
     display: block;
@@ -76,15 +76,15 @@
     transition: .3s all ease;
 }
 
-.iofef-image-select input:checked+label img {
+.isfef-image-select input:checked+label img {
     box-shadow: 0px 0px 0px 2px #094a94;
 }
 
-.iofef-image-select .elementor-field-subgroup.elementor-subgroup-inline .elementor-field-option {
+.isfef-image-select .elementor-field-subgroup.elementor-subgroup-inline .elementor-field-option {
     width: 33.33%;
 }
 
-.iofef-image-select .elementor-field-subgroup.elementor-subgroup-inline {
+.isfef-image-select .elementor-field-subgroup.elementor-subgroup-inline {
     width: 100%;
     row-gap: 10px;
 }

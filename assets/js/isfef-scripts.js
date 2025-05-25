@@ -3,21 +3,21 @@
 
     $(document).ready(function () {
 
-        $("[data-iofef-images]").each(function () {
+        $("[data-isfef-images]").each(function () {
 
             var $form = $(this);
-            var imageSelectFields = $form.data("iofef-images");
+            var imageSelectFields = $form.data("isfef-images");
             console.log(imageSelectFields)
 
             // Loop through each image select field configuration
             for (var i = 0; i < imageSelectFields.length; i++) {
                 var fieldData = imageSelectFields[i];
 
-                var fieldId = fieldData.iofef_image_select_id;
+                var fieldId = fieldData.isfef_image_select_id;
 
                 var select = '.elementor-field-group-' + fieldId
                 console.log(select);
-                var gallery = fieldData.iofef_image_gallery;
+                var gallery = fieldData.isfef_image_gallery;
                 var images = gallery.map(item => item.url)
                 console.log(images);
                 addImageSelectElementor(select, images);
@@ -29,7 +29,7 @@
             if (!field) return;
 
             // add class
-            $(selector).addClass('iofef-image-select');
+            $(selector).addClass('isfef-image-select');
             const options = field.querySelectorAll('.elementor-field-option');
 
 
