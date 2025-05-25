@@ -67,8 +67,9 @@ class Image_Options_Fields_Elementor
         }
 
         // load textdomain
-        // load_plugin_textdomain('advanced-elementor-addons', false, basename(dirname(__FILE__)) . '/languages');
+        load_plugin_textdomain('image-select-field-for-elementor-form', false, basename(dirname(__FILE__)) . '/languages');
 
+        // load hooks
         $this->load_hooks();
     }
 
@@ -87,16 +88,16 @@ class Image_Options_Fields_Elementor
                     return;
                 }
                 $activation_url = wp_nonce_url('plugins.php?action=activate&plugin=' . $elementor_pro_plugin . '&plugin_status=all&paged=1&s', 'activate-plugin_' . $elementor_pro_plugin);
-                $admin_notice   = '<p>' . esc_html__('Elementor Pro is missing. You need to activate your installed Elementor Pro to use Advanced Elementor Addons.', 'tpebl') . '</p>';
-                $admin_notice  .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $activation_url, esc_html__('Activate Elementor Pro Now', 'tpebl')) . '</p>';
+                $admin_notice   = '<p>' . esc_html__('Elementor Pro is missing. You need to activate your installed Elementor Pro to use Advanced Elementor Addons.', 'image-options-field-for-elementor-forms') . '</p>';
+                $admin_notice  .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $activation_url, esc_html__('Activate Elementor Pro Now', 'image-options-field-for-elementor-forms')) . '</p>';
             }
         } else {
             if (!current_user_can('install_plugins')) {
                 return;
             }
             $install_url  = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=elementor'), 'install-plugin_elementor');
-            $admin_notice = '<p>' . esc_html__('Elementor Required. You need to install & activate Elementor to use Advanced Elementor Addons.', 'tpebl') . '</p>';
-            $admin_notice .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__('Install Elementor Now', 'tpebl')) . '</p>';
+            $admin_notice = '<p>' . esc_html__('Elementor Required. You need to install & activate Elementor to use Advanced Elementor Addons.', 'image-options-field-for-elementor-forms') . '</p>';
+            $admin_notice .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__('Install Elementor Now', 'image-options-field-for-elementor-forms')) . '</p>';
         }
 
         echo '<div class="notice notice-error is-dismissible">' . wp_kses($admin_notice, [

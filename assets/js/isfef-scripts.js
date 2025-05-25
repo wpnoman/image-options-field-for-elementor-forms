@@ -7,7 +7,6 @@
 
             var $form = $(this);
             var imageSelectFields = $form.data("isfef-images");
-            console.log(imageSelectFields)
 
             // Loop through each image select field configuration
             for (var i = 0; i < imageSelectFields.length; i++) {
@@ -16,10 +15,8 @@
                 var fieldId = fieldData.isfef_image_select_id;
 
                 var select = '.elementor-field-group-' + fieldId
-                console.log(select);
                 var gallery = fieldData.isfef_image_gallery;
                 var images = gallery.map(item => item.url)
-                console.log(images);
                 addImageSelectElementor(select, images);
             }
         });

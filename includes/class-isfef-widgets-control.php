@@ -11,7 +11,7 @@ class ISFEF_widgets_control
         $element->start_controls_section(
             'isfef_image_select_field_section',
             [
-                'label' => __('Image Select Field', 'isfef'),
+                'label' => __('Image Select Field', 'image-options-field-for-elementor-forms'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -19,10 +19,10 @@ class ISFEF_widgets_control
         $element->add_control(
             'isfef_img_select_control',
             [
-                'label' => __('Enable', 'isfef'),
+                'label' => __('Enable', 'image-options-field-for-elementor-forms'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
-                'description' => __('This feature only works on the frontend.', 'isfef'),
+                'description' => __('This feature only works on the frontend.', 'image-options-field-for-elementor-forms'),
                 'label_on' => 'Yes',
                 'label_off' => 'No',
                 'return_value' => 'yes',
@@ -34,7 +34,7 @@ class ISFEF_widgets_control
         $repeater->add_control(
             'isfef_image_select_id',
             [
-                'label' => __('Image Select Field Custom ID', 'isfef'),
+                'label' => __('Image Select Field Custom ID', 'image-options-field-for-elementor-forms'),
                 'label_block' => true,
                 'type' => \Elementor\Controls_Manager::TEXT,
             ]
@@ -43,7 +43,7 @@ class ISFEF_widgets_control
         $repeater->add_control(
             'isfef_image_gallery',
             [
-                'label' => __('Add Images', 'isfef'),
+                'label' => __('Add Images', 'image-options-field-for-elementor-forms'),
                 'type' => \Elementor\Controls_Manager::GALLERY,
                 'default' => [],
             ]
@@ -64,7 +64,6 @@ class ISFEF_widgets_control
     {
         $settings = $element->get_settings();
         if (!empty($settings['isfef_img_select_control'])) {
-            print_r($settings['isfef_img_select_control']);
             if (array_key_exists('isfef_image_field_list', $settings)) {
                 $rep_data = $settings['isfef_image_field_list'];
                 if (!empty($rep_data[0]['isfef_image_select_id']) && !empty($rep_data[0]['isfef_image_gallery'])) {
