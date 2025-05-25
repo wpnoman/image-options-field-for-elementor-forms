@@ -2,17 +2,16 @@
 
 /**
  * Plugin Name:       Image Select Field for Elementor Forms
- * Plugin URI:        https://
- * Description:       Image Options Field for Elementor Forms is a powerful addon that extends the native Elementor Form widget by adding a custom image selection field. Let your users select options visually through images—perfect for forms that require choices like product styles, services, packages, or preferences.
- * Author:            WPNoman
- * Author URI:        
+ * Plugin URI:        http://wpnoman.com/
+ * Description:       Image Select Field for Elementor Forms is a powerful addon that extends the native Elementor Form widget by adding a custom image selection field. Let your users select options visually through images—perfect for forms that require choices like product styles, services, packages, or preferences.
+ * Author:            WPNoman0
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       international-telephone-field-for-elementor-form
+ * Text Domain:       image-options-field-for-elementor-forms
  * Domain Path:       /languages
- * Version:           1.0.2
+ * Version:           1.0.0
  * Requires PHP:      7.4
- * Requires at least: 6.2
+ * Requires at least: 5.9
  * Requires Plugins:  elementor
  *
  */
@@ -35,9 +34,9 @@ require ISFEF_PLUGIN_PATH . 'includes/class-isfef-widgets-control.php';
 
 
 if (! function_exists('Image_Options_Fields_Elementor')) {
-    function ADAE_init()
+    function ISFEF_init()
     {
         return Image_Options_Fields_Elementor::getInstance();
     }
-    ADAE_Init();
+    ISFEF_Init();
 }

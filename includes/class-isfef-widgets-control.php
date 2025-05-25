@@ -1,10 +1,31 @@
 <?php
 
+/**
+ * Elementor Form widget modification
+ *
+ * The init class that runs the Advanced Addons plugin.
+ * Intended To make sure that the plugin's minimum requirements are met.
+ *
+ * @since 1.0.0
+ */
 
 class ISFEF_widgets_control
 {
 
-
+     
+    /**
+     * Registers custom controls for the Elementor widget.
+     *
+     * This method adds a new section and controls to the Elementor widget panel
+     * for configuring an image select field. It includes a switcher to enable
+     * the feature, and a repeater control to allow users to add multiple image
+     * select fields with custom IDs and image galleries.
+     *
+     * @param \Elementor\Widget_Base $element The Elementor widget instance.
+     * @param array                  $args    Additional arguments passed to the method.
+     *
+     * @return void
+     */
     public function isfef_register_controls($element, $args)
     {
 
@@ -59,6 +80,24 @@ class ISFEF_widgets_control
 
         $element->end_controls_section();
     }
+
+    /**
+     * Handles the rendering process before an Elementor element is displayed.
+     *
+     * This method checks if the element has specific settings related to the 
+     * "Image Options Field for Elementor Forms" plugin. If the required settings 
+     * are present, it enqueues necessary styles and scripts and adds custom 
+     * attributes to the element's wrapper for further processing.
+     *
+     * @param \Elementor\Element_Base $element The Elementor element instance being rendered.
+     *
+     * @return void
+     *
+     * @uses \Elementor\Element_Base::get_settings() To retrieve the element's settings.
+     * @uses \Elementor\Element_Base::add_render_attribute() To add custom attributes to the element's wrapper.
+     * @uses wp_enqueue_style() To enqueue the plugin's stylesheet.
+     * @uses wp_enqueue_script() To enqueue the plugin's JavaScript file.
+     */
 
     public function before_render_element($element)
     {

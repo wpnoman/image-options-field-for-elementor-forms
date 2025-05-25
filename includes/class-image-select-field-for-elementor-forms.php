@@ -62,7 +62,7 @@ class Image_Options_Fields_Elementor
     {
 
         if (! did_action('elementor/loaded')) {
-            add_action('admin_notices', [$this, 'adae_elementor_load_notice']);
+            add_action('admin_notices', [$this, 'isfef_elementor_load_notice']);
             return;
         }
 
@@ -78,7 +78,7 @@ class Image_Options_Fields_Elementor
      * 
      * @return void
      */
-    public function adae_elementor_load_notice()
+    public function isfef_elementor_load_notice()
     {
         $elementor_pro_plugin = 'elementor-pro/elementor-pro.php';
 
