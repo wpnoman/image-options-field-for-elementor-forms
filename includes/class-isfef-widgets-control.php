@@ -12,7 +12,7 @@
 class ISFEF_widgets_control
 {
 
-     
+
     /**
      * Registers custom controls for the Elementor widget.
      *
@@ -26,13 +26,13 @@ class ISFEF_widgets_control
      *
      * @return void
      */
-    public function isfef_register_controls($element, $args)
+    public function isfef_register_controls($element)
     {
 
         $element->start_controls_section(
             'isfef_image_select_field_section',
             [
-                'label' => __('Image Select Field', 'image-options-field-for-elementor-forms'),
+                'label' => __('Image Select Field', 'image-select-field-for-elementor-forms'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -40,10 +40,10 @@ class ISFEF_widgets_control
         $element->add_control(
             'isfef_img_select_control',
             [
-                'label' => __('Enable', 'image-options-field-for-elementor-forms'),
+                'label' => __('Enable', 'image-select-field-for-elementor-forms'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
-                'description' => __('This feature only works on the frontend.', 'image-options-field-for-elementor-forms'),
+                'description' => __('This feature only works on the frontend.', 'image-select-field-for-elementor-forms'),
                 'label_on' => 'Yes',
                 'label_off' => 'No',
                 'return_value' => 'yes',
@@ -55,7 +55,7 @@ class ISFEF_widgets_control
         $repeater->add_control(
             'isfef_image_select_id',
             [
-                'label' => __('Image Select Field Custom ID', 'image-options-field-for-elementor-forms'),
+                'label' => __('Image Select Field Custom ID', 'image-select-field-for-elementor-forms'),
                 'label_block' => true,
                 'type' => \Elementor\Controls_Manager::TEXT,
             ]
@@ -64,7 +64,7 @@ class ISFEF_widgets_control
         $repeater->add_control(
             'isfef_image_gallery',
             [
-                'label' => __('Add Images', 'image-options-field-for-elementor-forms'),
+                'label' => __('Add Images', 'image-select-field-for-elementor-forms'),
                 'type' => \Elementor\Controls_Manager::GALLERY,
                 'default' => [],
             ]

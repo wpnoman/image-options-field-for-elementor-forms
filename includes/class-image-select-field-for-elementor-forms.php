@@ -73,40 +73,25 @@ class Image_Options_Fields_Elementor
         $this->load_hooks();
     }
 
-    /**
-     * Check if elementor active and notice
-     * 
-     * @return void
-     */
     public function isfef_elementor_load_notice()
     {
-        $elementor_pro_plugin = 'elementor-pro/elementor-pro.php';
-
+        $plugin = 'elementor/elementor.php';
         if ($this->is_elementor_activated()) {
-            if (!is_plugin_active($elementor_pro_plugin)) {
-                if (!current_user_can('activate_plugins')) {
-                    return;
-                }
-                $activation_url = wp_nonce_url('plugins.php?action=activate&plugin=' . $elementor_pro_plugin . '&plugin_status=all&paged=1&s', 'activate-plugin_' . $elementor_pro_plugin);
-                $admin_notice   = '<p>' . esc_html__('Elementor Pro is missing. You need to activate your installed Elementor Pro to use Advanced Elementor Addons.', 'image-options-field-for-elementor-forms') . '</p>';
-                $admin_notice  .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $activation_url, esc_html__('Activate Elementor Pro Now', 'image-options-field-for-elementor-forms')) . '</p>';
+            if (! current_user_can('activate_plugins')) {
+                return;
             }
+            $activation_url = wp_nonce_url('plugins.php?action = activate&amp;plugin = ' . $plugin . '&amp;plugin_status = all&amp;paged = 1&amp;s', 'activate-plugin_' . $plugin);
+            $admin_notice   = '<p>' . esc_html__('Elementor is missing. You need to activate your installed Elementor to use Unlock Addons for Elementor.', 'image-select-field-for-elementor-forms') . '</p>';
+            $admin_notice .= '<p>' . sprintf('<a href         = "%s" class          = "button-primary">%s</a>', $activation_url, esc_html__('Activate Elementor Now', 'image-select-field-for-elementor-forms')) . '</p>';
         } else {
-            if (!current_user_can('install_plugins')) {
+            if (! current_user_can('install_plugins')) {
                 return;
             }
             $install_url  = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=elementor'), 'install-plugin_elementor');
-            $admin_notice = '<p>' . esc_html__('Elementor Required. You need to install & activate Elementor to use Advanced Elementor Addons.', 'image-options-field-for-elementor-forms') . '</p>';
-            $admin_notice .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__('Install Elementor Now', 'image-options-field-for-elementor-forms')) . '</p>';
+            $admin_notice = '<p>' . esc_html__('Elementor Required. You need to install & activate Elementor to use Unlock Addons for Elementor.', 'image-select-field-for-elementor-forms') . '</p>';
+            $admin_notice .= '<p>' . sprintf('<a href="%s" class="button-primary">%s</a>', $install_url, esc_html__('Install Elementor Now', 'image-select-field-for-elementor-forms')) . '</p>';
         }
-
-        echo '<div class="notice notice-error is-dismissible">' . wp_kses($admin_notice, [
-            'a' => [
-                'href' => [],
-                'class' => []
-            ],
-            'p' => []
-        ]) . '</div>';
+        echo '<div class="notice notice-error is-dismissible">' . wp_kses($admin_notice, true) . '</div>';
     }
 
     /**
@@ -121,6 +106,9 @@ class Image_Options_Fields_Elementor
     }
 
 
+    /**
+     * Register scripts and styles
+     */
     public function isfef_register_assets()
     {
         wp_register_style(
@@ -139,7 +127,9 @@ class Image_Options_Fields_Elementor
         );
     }
 
-
+    /**
+     * Load wordpress hooks
+     */
     function load_hooks()
     {
         // enqueue assets

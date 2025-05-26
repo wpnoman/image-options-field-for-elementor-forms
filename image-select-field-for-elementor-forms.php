@@ -7,7 +7,7 @@
  * Author:            WPNoman0
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       image-options-field-for-elementor-forms
+ * Text Domain:       image-select-field-for-elementor-forms
  * Domain Path:       /languages
  * Version:           1.0.0
  * Requires PHP:      7.4

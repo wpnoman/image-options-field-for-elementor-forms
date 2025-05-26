@@ -1,9 +1,9 @@
 === Image Select Field for Elementor Forms ===
+Contributors: WPNoman0
 Plugin Name: Image Select Field for Elementor Forms
 Description: Image Select Field for Elementor Forms is a powerful addon that extends the native Elementor Form widget by adding a custom image selection field. Let your users select options visually through images—perfect for forms that require choices like product styles, services, packages, or preferences.
-Author: WPNoman0
 Author URI: https://profiles.wordpress.org/wprealizer/
-Tags: Elementor widgets, widgets for Elementor, elementor addon, widgets, addons
+Tags: image select field, elementor form, Elementor widgets, widgets for Elementor, elementor addon
 Requires at least: 5.9
 Tested up to: 6.8
 Stable tag: 1.0.0
@@ -15,14 +15,9 @@ Create modern Webpage using elementor for free with Advanced Addons.
 
 == Description ==
 
-**Advanced Elementor Addons** 
-Advanced addons table allows you to Create amazing design without any programming skills You can quickly add features to your different plans, choose a color (as well as many other options). What you see is what you get, and it’s totally free.
+**Image Select Field for Elementor Forms** 
+Image Select Field for Elementor Forms is a powerful addon that extends the native Elementor Form widget by adding a custom image selection field. Let your users select options visually through images—perfect for forms that require choices like product styles, services, packages, or preferences.
 
-**Available Layout** 
-1. Blog Grid
-2. Team Grid
-3. Button
-4. Progres bar
 
 **PRO features**
 There is no pro version available of this plugin.
