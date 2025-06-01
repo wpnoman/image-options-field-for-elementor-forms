@@ -1,19 +1,17 @@
 <?php
 
 /**
- * Plugin Name:       Image Select Field for Elementor Forms
- * Plugin URI:        http://wpnoman.com/
- * Description:       Image Select Field for Elementor Forms is a powerful addon that extends the native Elementor Form widget by adding a custom image selection field. Let your users select options visually through images—perfect for forms that require choices like product styles, services, packages, or preferences.
- * Author:            WPNoman0
- * License:           GPL v2 or later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       image-select-field-for-elementor-forms
- * Domain Path:       /languages
- * Version:           1.0.0
- * Requires PHP:      7.4
+ * Plugin name: Image Select Field for Elementor Forms
+ * Description: Image Select Field for Elementor Forms is a powerful addon that extends the native Elementor Form widget by adding a custom image selection field. Let your users select options visually through images—perfect for forms that require choices like product styles, services, packages, or preferences.
+ * Version:     1.0.1
+ * Author:      WP Noman
+ * License:     GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 5.9
+ * Requires PHP: 7.4
+ * Text Domain: image-select-field-for-elementor-forms
  * Requires Plugins:  elementor
- *
+ * Domain Path: /languages
  */
 
 
