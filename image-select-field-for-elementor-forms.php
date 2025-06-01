@@ -30,10 +30,10 @@ require ISFEFORMS_PLUGIN_PATH . 'includes/class-image-select-field-for-elementor
 require ISFEFORMS_PLUGIN_PATH . 'includes/class-isfef-widgets-control.php';
 
 
-if (! function_exists('isfeforms_Image_Options_Fields_Elementor')) {
-    function ISFEFORMS_init()
+if (! function_exists('ISFEFORMS_Image_Options_Fields_Elementor')) {
+    function isfeforms_init()
     {
-        return isfeforms_Image_Options_Fields_Elementor::getInstance();
+        return ISFEFORMS_Image_Options_Fields_Elementor::getInstance();
     }
-    ISFEFORMS_Init();
+    isfeforms_init();
 }

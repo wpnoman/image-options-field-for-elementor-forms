@@ -8,7 +8,7 @@
  *
  * @since 1.0.0
  */
-class isfeforms_Image_Options_Fields_Elementor
+class ISFEFORMS_Image_Options_Fields_Elementor
 {
     /**
      *
