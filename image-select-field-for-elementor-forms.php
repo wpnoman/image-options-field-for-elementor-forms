@@ -11,7 +11,6 @@
  * Requires PHP: 7.4
  * Text Domain: image-select-field-for-elementor-forms
  * Requires Plugins:  elementor
- * Domain Path: /languages
  */
 
 
@@ -20,21 +19,21 @@ if (! defined('ABSPATH')) {
 }
 
 /*** Defined constant for later use */
-define('ISFEF_FILE', __FILE__);
-define('ISFEF_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('ISFEF_PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('ISFEFORMS_FILE', __FILE__);
+define('ISFEFORMS_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('ISFEFORMS_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 /**
  * Load file fiels
  */
-require ISFEF_PLUGIN_PATH . 'includes/class-image-select-field-for-elementor-forms.php';
-require ISFEF_PLUGIN_PATH . 'includes/class-isfef-widgets-control.php';
+require ISFEFORMS_PLUGIN_PATH . 'includes/class-image-select-field-for-elementor-forms.php';
+require ISFEFORMS_PLUGIN_PATH . 'includes/class-isfef-widgets-control.php';
 
 
-if (! function_exists('Image_Options_Fields_Elementor')) {
-    function ISFEF_init()
+if (! function_exists('isfeforms_Image_Options_Fields_Elementor')) {
+    function ISFEFORMS_init()
     {
-        return Image_Options_Fields_Elementor::getInstance();
+        return isfeforms_Image_Options_Fields_Elementor::getInstance();
     }
-    ISFEF_Init();
+    ISFEFORMS_Init();
 }

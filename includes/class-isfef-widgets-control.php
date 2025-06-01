@@ -9,7 +9,7 @@
  * @since 1.0.0
  */
 
-class ISFEF_widgets_control
+class ISFEFORMS_widgets_control
 {
 
 
@@ -26,11 +26,11 @@ class ISFEF_widgets_control
      *
      * @return void
      */
-    public function isfef_register_controls($element)
+    public function isfeforms_register_controls($element)
     {
 
         $element->start_controls_section(
-            'isfef_image_select_field_section',
+            'isfeforms_image_select_field_section',
             [
                 'label' => __('Image Select Field', 'image-select-field-for-elementor-forms'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -38,7 +38,7 @@ class ISFEF_widgets_control
         );
 
         $element->add_control(
-            'isfef_img_select_control',
+            'isfeforms_img_select_control',
             [
                 'label' => __('Enable', 'image-select-field-for-elementor-forms'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -53,7 +53,7 @@ class ISFEF_widgets_control
         $repeater = new \Elementor\Repeater();
 
         $repeater->add_control(
-            'isfef_image_select_id',
+            'isfeforms_image_select_id',
             [
                 'label' => __('Image Select Field Custom ID', 'image-select-field-for-elementor-forms'),
                 'label_block' => true,
@@ -62,7 +62,7 @@ class ISFEF_widgets_control
         );
 
         $repeater->add_control(
-            'isfef_image_gallery',
+            'isfeforms_image_gallery',
             [
                 'label' => __('Add Images', 'image-select-field-for-elementor-forms'),
                 'type' => \Elementor\Controls_Manager::GALLERY,
@@ -71,7 +71,7 @@ class ISFEF_widgets_control
         );
 
         $element->add_control(
-            'isfef_image_field_list',
+            'isfeforms_image_field_list',
             array(
                 'type'    => Elementor\Controls_Manager::REPEATER,
                 'fields'  => $repeater->get_controls(),
@@ -102,10 +102,10 @@ class ISFEF_widgets_control
     public function before_render_element($element)
     {
         $settings = $element->get_settings();
-        if (!empty($settings['isfef_img_select_control'])) {
-            if (array_key_exists('isfef_image_field_list', $settings)) {
-                $rep_data = $settings['isfef_image_field_list'];
-                if (!empty($rep_data[0]['isfef_image_select_id']) && !empty($rep_data[0]['isfef_image_gallery'])) {
+        if (!empty($settings['isfeforms_img_select_control'])) {
+            if (array_key_exists('isfeforms_image_field_list', $settings)) {
+                $rep_data = $settings['isfeforms_image_field_list'];
+                if (!empty($rep_data[0]['isfeforms_image_select_id']) && !empty($rep_data[0]['isfeforms_image_gallery'])) {
                     wp_enqueue_style('isfef-style');
                     wp_enqueue_script('isfef-scripts');
                     $element->add_render_attribute('_wrapper', [

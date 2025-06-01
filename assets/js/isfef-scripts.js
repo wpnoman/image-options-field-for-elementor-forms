@@ -12,10 +12,10 @@
             for (var i = 0; i < imageSelectFields.length; i++) {
                 var fieldData = imageSelectFields[i];
 
-                var fieldId = fieldData.isfef_image_select_id;
+                var fieldId = fieldData.isfeforms_image_select_id;
 
                 var select = '.elementor-field-group-' + fieldId
-                var gallery = fieldData.isfef_image_gallery;
+                var gallery = fieldData.isfeforms_image_gallery;
                 var images = gallery.map(item => item.url)
                 addImageSelectElementor(select, images);
             }

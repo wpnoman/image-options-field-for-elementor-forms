@@ -8,7 +8,7 @@
  *
  * @since 1.0.0
  */
-class Image_Options_Fields_Elementor
+class isfeforms_Image_Options_Fields_Elementor
 {
     /**
      *
@@ -62,18 +62,15 @@ class Image_Options_Fields_Elementor
     {
 
         if (! did_action('elementor/loaded')) {
-            add_action('admin_notices', [$this, 'isfef_elementor_load_notice']);
+            add_action('admin_notices', [$this, 'isfeforms_elementor_load_notice']);
             return;
         }
-
-        // load textdomain
-        load_plugin_textdomain('image-select-field-for-elementor-form', false, basename(dirname(__FILE__)) . '/languages');
 
         // load hooks
         $this->load_hooks();
     }
 
-    public function isfef_elementor_load_notice()
+    public function isfeforms_elementor_load_notice()
     {
         $plugin = 'elementor/elementor.php';
         if ($this->is_elementor_activated()) {
@@ -109,18 +106,18 @@ class Image_Options_Fields_Elementor
     /**
      * Register scripts and styles
      */
-    public function isfef_register_assets()
+    public function isfeforms_register_assets()
     {
         wp_register_style(
             'isfef-style',
-            ISFEF_PLUGIN_URL . 'assets/css/isfef-style.css',
+            ISFEFORMS_PLUGIN_URL . 'assets/css/isfef-style.css',
             [],
             '1.0.0'
         );
 
         wp_register_script(
             'isfef-scripts',
-            ISFEF_PLUGIN_URL . 'assets/js/isfef-scripts.js',
+            ISFEFORMS_PLUGIN_URL . 'assets/js/isfef-scripts.js',
             ['jquery'],
             '1.0.0',
             true
@@ -128,16 +125,16 @@ class Image_Options_Fields_Elementor
     }
 
     /**
-     * Load wordpress hooks
+     * Load WordPress hooks
      */
     function load_hooks()
     {
         // enqueue assets
-        add_action('wp_enqueue_scripts', [$this, 'isfef_register_assets']);
+        add_action('wp_enqueue_scripts', [$this, 'isfeforms_register_assets']);
 
         // elementor widgets controls
-        $widgets_control = new ISFEF_widgets_control();
-        add_action('elementor/element/form/section_form_fields/after_section_end', [$widgets_control, 'isfef_register_controls'], 10, 2);
+        $widgets_control = new ISFEFORMS_widgets_control();
+        add_action('elementor/element/form/section_form_fields/after_section_end', [$widgets_control, 'isfeforms_register_controls'], 10, 2);
         add_action('elementor/frontend/widget/before_render', [$widgets_control, 'before_render_element'], 10, 1);
     }
 }
